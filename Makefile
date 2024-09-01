@@ -1,10 +1,11 @@
 DOCKER_IMAGE=lfs
 NAME=lfs
+VOLUMES=-v lfs_volume:/mnt/lfs
 
 all: build run
 
 run:
-	docker run --rm -it --name $(NAME) $(DOCKER_IMAGE):latest || true
+	docker run --rm -it --name $(NAME) $(VOLUMES) $(DOCKER_IMAGE):latest || true
 
 build:
 	docker build -t $(DOCKER_IMAGE):latest .
@@ -16,7 +17,6 @@ cp-toolchain:
 	docker cp $(NAME):/mnt/lfs/sources/ ./toolchain
 
 clean:
-	rm -rf build/*
 	docker rmi $(DOCKER_IMAGE)
 
 .PHONY: all run build

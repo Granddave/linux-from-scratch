@@ -6,6 +6,7 @@ LABEL maintainer="davidisaksson93@gmail.com"
 
 ENV LFS_VERSION=12.1-systemd
 ENV LFS=/mnt/lfs
+ENV LFS_TGT=x86_64-lfs-linux-gnu
 
 ENV LC_ALL=POSIX
 
@@ -26,8 +27,8 @@ RUN apt update && apt install -y \
 # Set bash as default shell instead of dash
 RUN update-alternatives --install /bin/sh sh /bin/bash 100
 
-RUN mkdir -pv $LFS/sources
-    # && chmod -v a+wt $LFS/sources
+RUN mkdir -pv $LFS/sources \
+    && chmod -v a+wt $LFS/sources
 
 WORKDIR $LFS/sources
 
@@ -39,8 +40,9 @@ RUN echo 'Defaults env_keep += "LFS LC_ALL LFS_TGT PATH MAKEFLAGS"' >> /etc/sudo
 
 COPY ./scripts $LFS/scripts
 COPY ./toolchain/* $LFS/sources
-
-RUN chown -v lfs $LFS/sources
+RUN chown -vR lfs \
+    $LFS/sources \
+    $LFS/scripts
 
 USER lfs
 COPY ["lfs-user/.bash_profile", "lfs-user/.bashrc", "/home/lfs/" ]
