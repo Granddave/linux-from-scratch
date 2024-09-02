@@ -1,6 +1,6 @@
 # Linux From Scratch
 
-This is a Docker powered build of [Linux From Scratch version 12.3 with Systemd](https://github.com/reinterpretcat/lfs).
+This is a Docker powered build of [Linux From Scratch version 12.3 with Systemd](https://www.linuxfromscratch.org/lfs/view/12.1-systemd/index.html).
 
 ## Requirements
 
