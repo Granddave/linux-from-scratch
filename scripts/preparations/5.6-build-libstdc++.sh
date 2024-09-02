@@ -28,4 +28,4 @@ make DESTDIR=$LFS install
 rm -v $LFS/usr/lib/lib{stdc++{,exp,fs},supc++}.la
 
 popd # build
-popd # /tmp/gcc
+popd # /tmp/libstdc++
