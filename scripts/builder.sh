@@ -39,7 +39,6 @@ main() {
     ensure_var "step_no"
     ensure_var "pkg_name"
     ensure_var "src_tar"
-
     ensure_fn "build"
 
     source "$pkg_file"
