@@ -6,7 +6,7 @@ VOLUME_ARGS=-v $(DOCKER_VOLUME):/mnt/lfs
 all: build run
 
 run:
-	docker run --rm -it --name $(NAME) $(VOLUME_ARGS) $(DOCKER_IMAGE):latest || true
+	docker run --rm -it --privileged --name $(NAME) $(VOLUME_ARGS) $(DOCKER_IMAGE):latest || true
 
 build:
 	docker build -t $(DOCKER_IMAGE):latest .
