@@ -13,9 +13,9 @@ This is a Docker powered build of [Linux From Scratch version 12.3 with Systemd]
 make
 
 # In container
-sh ../scripts/packages/fetch.sh  # Download sources
-sh ../scripts/version-check.sh   # Verify tools on host is OK
-sh ../scripts/run.sh             # Build tools for building the OS
+sh ../scripts/packages/fetch.sh    # Download sources
+sh ../scripts/version-check.sh     # Verify tools on host is OK
+sh ../scripts/preparations/run.sh  # Build tools for building the OS
 ```
 
 ## Thanks to
