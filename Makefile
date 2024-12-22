@@ -1,11 +1,12 @@
 DOCKER_IMAGE=lfs
 NAME=lfs
-VOLUMES=-v lfs_volume:/mnt/lfs
+DOCKER_VOLUME=lfs_volume
+VOLUME_ARGS=-v $(DOCKER_VOLUME):/mnt/lfs
 
 all: build run
 
 run:
-	docker run --rm -it --name $(NAME) $(VOLUMES) $(DOCKER_IMAGE):latest || true
+	docker run --rm -it --name $(NAME) $(VOLUME_ARGS) $(DOCKER_IMAGE):latest || true
 
 build:
 	docker build -t $(DOCKER_IMAGE):latest .
@@ -29,5 +30,6 @@ restore-scripts:
 
 clean:
 	docker rmi $(DOCKER_IMAGE)
+	docker volume rm $(DOCKER_VOLUME)
 
 .PHONY: all run build
