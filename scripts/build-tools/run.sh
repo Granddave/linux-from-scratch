@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
-sudo sh $LFS/scripts/build/7.2-change-ownership.sh
-sudo sh $LFS/scripts/build/7.3-prepare-vfs.sh
+sudo sh $LFS/scripts/build-tools/7.2-change-ownership.sh
+sudo sh $LFS/scripts/build-tools/7.3-prepare-vfs.sh
 
-echo "Step 7.4: Build the LFS System"
+echo "Step 7.4: Build the LFS base"
 sudo chroot "$LFS" /usr/bin/env -i   \
     HOME=/root                  \
     TERM="$TERM"                \
@@ -13,4 +13,4 @@ sudo chroot "$LFS" /usr/bin/env -i   \
     MAKEFLAGS="-j$(nproc)"      \
     TESTSUITEFLAGS="-j$(nproc)" \
     /bin/bash --login +h        \
-    -c "sh /scripts/build/run-chroot.sh"
+    -c "sh /scripts/build-tools/run-chroot.sh"
