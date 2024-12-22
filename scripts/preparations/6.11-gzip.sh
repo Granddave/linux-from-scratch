@@ -4,6 +4,8 @@ set -x
 
 # The Gzip package contains programs for compressing and decompressing files.
 
+echo "Step 6.11: Build Gzip"
+
 tar -xf gzip-1.13.tar.xz -C /tmp/
 mv /tmp/gzip-* /tmp/gzip
 

@@ -4,6 +4,8 @@ set -x
 
 #
 
+echo "Step "
+
 tar -xf  -C /tmp/
 mv /tmp/diffutils-* /tmp/diffutils
 

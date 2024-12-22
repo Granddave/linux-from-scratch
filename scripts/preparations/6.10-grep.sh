@@ -4,6 +4,8 @@ set -x
 
 # The Grep package contains programs for searching through files.
 
+echo "Step 6.10: Build Grep"
+
 tar -xf grep-3.11.tar.xz -C /tmp/
 mv /tmp/grep-* /tmp/grep
 

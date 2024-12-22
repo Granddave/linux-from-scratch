@@ -4,6 +4,8 @@ set -x
 
 # The Linux API Headers (in linux-6.7.4.tar.xz) expose the kernel's API for use by Glibc.
 
+echo "Step 5.4: Build Linux Headers"
+
 tar -xf linux-6.7.4.tar.xz -C /tmp/
 mv /tmp/linux-* /tmp/linux
 

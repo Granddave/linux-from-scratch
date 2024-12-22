@@ -4,6 +4,8 @@ set -x
 
 # The GCC package contains the GNU compiler collection, which includes the C and C++ compilers.
 
+echo "Step 5.3: Build GCC"
+
 tar -xf gcc-13.2.0.tar.xz -C /tmp/
 mv /tmp/gcc-* /tmp/gcc
 

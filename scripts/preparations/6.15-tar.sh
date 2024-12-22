@@ -7,6 +7,8 @@ set -x
 # previously created archives to extract files, to store additional files, or
 # to update or list files which were already stored.
 
+echo "Step 6.15: Build Tar"
+
 tar -xf tar-1.35.tar.xz -C /tmp/
 mv /tmp/tar-* /tmp/tar
 

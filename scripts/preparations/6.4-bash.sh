@@ -4,6 +4,8 @@ set -x
 
 # The Bash package contains the Bourne-Again Shell.
 
+echo "Step 6.4: Build Bash"
+
 tar -xf bash-5.2.21.tar.gz -C /tmp/
 mv /tmp/bash-* /tmp/bash
 

@@ -7,6 +7,8 @@ set -x
 # closing files, reading and writing files, string handling, pattern matching,
 # arithmetic, and so on.
 
+echo "Step 5.5: Build Glibc"
+
 tar -xf glibc-2.39.tar.xz -C /tmp/
 mv /tmp/glibc-* /tmp/glibc
 cp glibc-2.39-fhs-1.patch /tmp/

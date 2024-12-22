@@ -2,6 +2,8 @@
 set -e
 set -x
 
+echo "Step 5.2: Build Binutils"
+
 # The Binutils package contains a linker, an assembler, and other tools for handling object files.
 
 tar -xf binutils-2.42.tar.xz -C /tmp/

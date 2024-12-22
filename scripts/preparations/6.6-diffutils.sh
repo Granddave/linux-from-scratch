@@ -5,6 +5,8 @@ set -x
 # The Diffutils package contains programs that show the differences between
 # files or directories.
 
+echo "Step 6.6: Build Diffutils"
+
 tar -xf diffutils-3.10.tar.xz -C /tmp/
 mv /tmp/diffutils-* /tmp/diffutils
 

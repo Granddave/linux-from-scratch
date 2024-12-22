@@ -5,6 +5,8 @@ set -x
 # The Binutils package contains a linker, an assembler, and other tools for
 # handling object files.
 
+echo "Step 6.17: Build Binutils (pass 2)"
+
 tar -xf binutils-2.42.tar.xz -C /tmp/
 mv /tmp/binutils-* /tmp/binutils-pass2
 

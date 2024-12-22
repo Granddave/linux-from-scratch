@@ -7,6 +7,8 @@ set -x
 # Compressing text files with xz yields a better compression percentage than
 # with the traditional gzip or bzip2 commands.
 
+echo "Step 6.16: Build Xz"
+
 tar -xf xz-5.4.6.tar.xz -C /tmp/
 mv /tmp/xz-* /tmp/xz
 

@@ -5,6 +5,8 @@ set -x
 # The GCC package contains the GNU compiler collection, which includes the C
 # and C++ compilers.
 
+echo "Step 6.18: Build GCC - Pass 2"
+
 tar -xf gcc-13.2.0.tar.xz -C /tmp/
 mv /tmp/gcc-* /tmp/gcc-pass2
 

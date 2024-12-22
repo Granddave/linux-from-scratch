@@ -4,6 +4,8 @@ set -x
 
 # The Sed package contains a stream editor.
 
+echo "Step 6.14: Build Sed"
+
 tar -xf sed-4.9.tar.xz -C /tmp/
 mv /tmp/sed-* /tmp/sed
 

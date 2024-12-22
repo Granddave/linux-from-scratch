@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Step 4.2: Creating Root Filesystem Directories"
+
 mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
 
 for i in bin lib sbin; do

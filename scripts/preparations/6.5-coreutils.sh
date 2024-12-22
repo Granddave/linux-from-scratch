@@ -5,6 +5,8 @@ set -x
 # The Coreutils package contains the basic utility programs needed by every
 # operating system.
 
+echo "Step 6.5: Build Coreutils"
+
 tar -xf coreutils-9.4.tar.xz -C /tmp/
 mv /tmp/coreutils-* /tmp/coreutils
 

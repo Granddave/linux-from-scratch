@@ -9,6 +9,8 @@ set -x
 # xargs program, which can be used to run a specified command on each file
 # selected by a search.
 
+echo "Step 6.8: Build Findutils"
+
 tar -xf findutils-4.9.0.tar.xz -C /tmp/
 mv /tmp/findutils-* /tmp/findutils
 

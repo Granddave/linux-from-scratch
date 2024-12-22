@@ -4,6 +4,8 @@ set -x
 
 # The Gawk package contains programs for manipulating text files.
 
+echo "Step 6.9: Build Gawk"
+
 tar -xf gawk-5.3.0.tar.xz -C /tmp/
 mv /tmp/gawk-* /tmp/gawk
 

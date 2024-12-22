@@ -7,6 +7,8 @@ set -x
 # gcc-pass1 because Libstdc++ depends on Glibc, which was not yet available in
 # the target directory.
 
+echo "Step 5.6: Build Libstdc++"
+
 tar -xf gcc-13.2.0.tar.xz -C /tmp/
 mv /tmp/gcc-* /tmp/libstdc++
 

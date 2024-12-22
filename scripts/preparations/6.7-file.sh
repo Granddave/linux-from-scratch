@@ -5,6 +5,8 @@ set -x
 # The File package contains a utility for determining the type of a given file
 # or files.
 
+echo "Step 6.7: Build File"
+
 tar -xf file-5.45.tar.gz -C /tmp/
 mv /tmp/file-* /tmp/file
 

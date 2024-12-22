@@ -5,6 +5,8 @@ set -x
 # The Ncurses package contains libraries for terminal-independent handling of
 # character screens.
 
+echo "Step 6.3: Build Ncurses"
+
 tar -xf ncurses-6.4-20230520.tar.xz -C /tmp/
 mv /tmp/ncurses-* /tmp/ncurses
 

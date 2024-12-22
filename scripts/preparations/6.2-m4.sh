@@ -4,6 +4,8 @@ set -x
 
 # The M4 package contains a macro processor.
 
+echo "Step 6.2: Build M4"
+
 tar -xf m4-1.4.19.tar.xz -C /tmp/
 mv /tmp/m4-* /tmp/m4
 

@@ -5,6 +5,8 @@ set -x
 # The Make package contains a program for controlling the generation of
 # executables and other non-source files of a package from source files.
 
+echo "Step 6.12: Build Make"
+
 tar -xf make-4.4.1.tar.gz -C /tmp/
 mv /tmp/make-* /tmp/make
 
