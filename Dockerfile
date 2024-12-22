@@ -39,7 +39,6 @@ RUN echo "lfs ALL=NOPASSWD: ALL" >> /etc/sudoers.d/lfs
 RUN echo 'Defaults env_keep += "LFS LC_ALL LFS_TGT PATH MAKEFLAGS"' >> /etc/sudoers.d/lfs
 
 COPY ./scripts $LFS/scripts
-COPY ./toolchain/* $LFS/sources
 RUN chown -vR lfs \
     $LFS/sources \
     $LFS/scripts
