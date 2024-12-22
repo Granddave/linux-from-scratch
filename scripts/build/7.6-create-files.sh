@@ -1,9 +1,10 @@
 #!/bin/bash
-
 set -euo pipefail
 set -x
 
 # Create the necessary files and symlinks
+
+echo "Step 7.6: Create Files"
 
 ln -sv /proc/self/mounts /etc/mtab
 

@@ -1,11 +1,12 @@
 #!/bin/bash
-
 set -euo pipefail
 set -x
 
 # Create the necessary directories
 
-mkdir -pv /{boot,home,mnt,opt,srv
+echo "Step 7.5. Creating Directories"
+
+mkdir -pv /{boot,home,mnt,opt,srv}
 
 mkdir -pv /etc/{opt,sysconfig}
 mkdir -pv /lib/firmware

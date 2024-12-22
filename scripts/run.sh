@@ -1,6 +1,6 @@
 #!/bin/bash
-
 set -euo pipefail
+set -x
 
 # Execute as LFS
 
@@ -11,7 +11,8 @@ sh $LFS/scripts/preparations/run
 sudo sh $LFS/scripts/build/7.2-change-ownership.sh
 sudo sh $LFS/scripts/build/7.3-prepare-vfs.sh
 
-chroot "$LFS" /usr/bin/env -i   \
+echo "Step 7.4: Build the LFS System"
+sudo chroot "$LFS" /usr/bin/env -i   \
     HOME=/root                  \
     TERM="$TERM"                \
     PS1='(lfs chroot) \u:\w\$ ' \
