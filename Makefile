@@ -32,4 +32,4 @@ clean:
 	docker rmi $(DOCKER_IMAGE)
 	docker volume rm $(DOCKER_VOLUME)
 
-.PHONY: all run build
+.PHONY: all run build clean attach backup-sources backup-scripts restore-sources restore-scripts
