@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-# sudo sh $LFS/scripts/build-tools/7.2-change-ownership.sh
-# sudo sh $LFS/scripts/build-tools/7.3-prepare-vfs.sh
+sudo sh $LFS/scripts/build-tools/7.2-change-ownership.sh
+sudo sh $LFS/scripts/build-tools/7.3-prepare-vfs.sh
 
 echo "Step 7.4: Build the LFS base"
 sudo chroot "$LFS" /usr/bin/env -i   \

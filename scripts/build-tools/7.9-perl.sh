@@ -17,5 +17,5 @@ build() {
         -Dvendorlib=/usr/lib/perl5/5.38/vendor_perl \
         -Dvendorarch=/usr/lib/perl5/5.38/vendor_perl
     make
-    # make install
+    make install
 }
