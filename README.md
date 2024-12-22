@@ -15,7 +15,7 @@ make
 # In container
 sh ../scripts/packages/fetch.sh    # Download sources
 sh ../scripts/version-check.sh     # Verify tools on host is OK
-sh ../scripts/preparations/run.sh  # Build tools for building the OS
+sh ../scripts/run.sh               # Build host tools and LFS system
 ```
 
 ## Thanks to
