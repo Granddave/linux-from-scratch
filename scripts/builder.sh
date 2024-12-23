@@ -2,7 +2,7 @@
 set -euo pipefail
 trap 'echo "Error on line $LINENO"' ERR
 
-BUILD_DIR=$(mktemp -d)
+TMP_DIR=$(mktemp -d)
 
 ensure_var() {
     local var_name="$1"
@@ -29,7 +29,16 @@ extract_source() {
     fi
 
     echo "Extracting $source_file"
-    tar xf "$source_file" -C "$BUILD_DIR"
+    tar xf "$source_file" -C "$TMP_DIR"
+}
+
+run_fn_if_exists() {
+    local fn_name="$1"
+    if [[ $(type -t "$fn_name") == "function" ]]; then
+        set -x
+        "$fn_name"
+        set +x
+    fi
 }
 
 main() {
@@ -39,15 +48,17 @@ main() {
     ensure_var "step_no"
     ensure_var "pkg_name"
     ensure_var "src_tar"
-    ensure_fn "build"
 
     source "$pkg_file"
     echo "Step $step_no: Build $pkg_name"
     extract_source
 
-    set -x
-    pushd $(find "$BUILD_DIR" -maxdepth 1 -type d -iname "${pkg_name}*")
-    build
+    BUILD_DIR=$(find "$TMP_DIR" -maxdepth 1 -type d -iname "${pkg_name}*")
+    export BUILD_DIR
+    echo "Build directory: $BUILD_DIR"
+    pushd "$BUILD_DIR"
+    run_fn_if_exists "prepare"
+    run_fn_if_exists "build"
     popd
 }
 

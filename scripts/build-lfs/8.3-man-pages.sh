@@ -1,17 +1,11 @@
 #!/bin/bash
-set -euo pipefail
-set -x
-
 # The Man-pages package contains over 2,400 man pages.
 
-echo "Step 8.3: Build man-pages"
+step_no=8.3
+pkg_name=man-pages
+src_tar=man-pages-6.06.tar.xz
 
-tar -xf /sources/man-pages-6.06.tar.xz -C /tmp/
-mv /tmp/man-pages-* /tmp/man-pages
-
-pushd /tmp/man-pages
-
-rm -v man3/crypt*
-make prefix=/usr install
-
-popd # /tmp/man-pages
+build() {
+    rm -v man3/crypt*
+    make prefix=/usr install
+}
