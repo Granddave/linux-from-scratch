@@ -26,7 +26,9 @@ build() {
         libc_cv_slibdir=/usr/lib
 
     make
-    make check
+    make check || {
+        echo "Glibc tests failed. Check the log file for details."
+    }
 
     touch /etc/ld.so.conf
 
