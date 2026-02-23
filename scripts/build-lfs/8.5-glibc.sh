@@ -6,13 +6,13 @@
 
 step_no=8.5
 pkg_name=glibc
-src_tar=glibc-2.39.tar.xz
+pkg_tar=glibc-2.39.tar.xz
 
-prepare() {
+patch_phase() {
     patch -Np1 -i "$SOURCES_DIR/glibc-2.39-fhs-1.patch"
 }
 
-build() {
+build_phase() {
     mkdir -v build
     pushd build
     echo "rootsbindir=/usr/sbin" > configparms

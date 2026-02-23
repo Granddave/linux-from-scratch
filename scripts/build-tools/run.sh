@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+export SOURCES_DIR=$LFS/sources
+
 sudo sh $LFS/scripts/build-tools/7.2-change-ownership.sh
 sudo sh $LFS/scripts/build-tools/7.3-prepare-vfs.sh
 

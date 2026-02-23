@@ -3,17 +3,19 @@ set -euo pipefail
 set -x
 
 # Create the necessary files and symlinks
+step_no=7.6
+pkg_name=""
+pkg_tar=""
 
-echo "Step 7.6: Create Files"
+build_phase() {
+    ln -sv /proc/self/mounts /etc/mtab
 
-ln -sv /proc/self/mounts /etc/mtab
-
-cat > /etc/hosts << EOF
+    cat > /etc/hosts << EOF
 127.0.0.1  localhost $(hostname)
 ::1        localhost
 EOF
 
-cat > /etc/passwd << "EOF"
+    cat > /etc/passwd << "EOF"
 root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/dev/null:/usr/bin/false
 daemon:x:6:6:Daemon User:/dev/null:/usr/bin/false
@@ -30,7 +32,7 @@ systemd-oom:x:81:81:systemd Out Of Memory Daemon:/:/usr/bin/false
 nobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false
 EOF
 
-cat > /etc/group << "EOF"
+    cat > /etc/group << "EOF"
 root:x:0:
 bin:x:1:daemon
 sys:x:2:
@@ -66,15 +68,16 @@ users:x:999:
 nogroup:x:65534:
 EOF
 
-# Skip the test user for now
-#echo "tester:x:101:101::/home/tester:/bin/bash" >> /etc/passwd
-#echo "tester:x:101:" >> /etc/group
-#install -o tester -d /home/tester
+    # Skip the test user for now
+    #echo "tester:x:101:101::/home/tester:/bin/bash" >> /etc/passwd
+    #echo "tester:x:101:" >> /etc/group
+    #install -o tester -d /home/tester
 
-# Skip fixing the shell username when in a script
-#exec /usr/bin/bash --login
+    # Skip fixing the shell username when in a script
+    #exec /usr/bin/bash --login
 
-touch /var/log/{btmp,lastlog,faillog,wtmp}
-chgrp -v utmp /var/log/lastlog
-chmod -v 664  /var/log/lastlog
-chmod -v 600  /var/log/btmp
+    touch /var/log/{btmp,lastlog,faillog,wtmp}
+    chgrp -v utmp /var/log/lastlog
+    chmod -v 664  /var/log/lastlog
+    chmod -v 600  /var/log/btmp
+}

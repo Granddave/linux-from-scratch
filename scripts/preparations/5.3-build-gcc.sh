@@ -1,6 +1,5 @@
 #!/bin/bash
-set -e
-set -x
+set -ex
 
 # The GCC package contains the GNU compiler collection, which includes the C and C++ compilers.
 

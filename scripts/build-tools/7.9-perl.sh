@@ -2,9 +2,9 @@
 
 step_no=7.9
 pkg_name=perl
-src_tar=perl-5.38.2.tar.xz
+pkg_tar=perl-5.38.2.tar.xz
 
-build() {
+build_phase() {
     sh Configure \
         -des                                        \
         -Dprefix=/usr                               \

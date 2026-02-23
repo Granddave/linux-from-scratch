@@ -10,6 +10,7 @@ This is a Docker powered build of [Linux From Scratch version 12.3 with Systemd]
 
 ```sh
 # On host
+make create-volume
 make
 
 # In container
