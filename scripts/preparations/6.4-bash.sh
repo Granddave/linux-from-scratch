@@ -6,18 +6,18 @@ set -x
 
 echo "Step 6.4: Build Bash"
 
-tar -xf bash-5.2.21.tar.gz -C /tmp/
-mv /tmp/bash-* /tmp/bash
+step_no=6.4
+pkg_name=bash
+pkg_version=5.2.21
+pkg_tar=$pkg_name-$pkg_version.tar.gz
 
-pushd /tmp/bash
-
-./configure \
-    --prefix=/usr \
-    --build=$(sh support/config.guess) \
-    --host=$LFS_TGT \
-    --without-bash-malloc
-make
-make DESTDIR=$LFS install
-ln -sv bash $LFS/bin/sh
-
-popd # /tmp/bash
+build_phase() {
+    ./configure \
+        --prefix=/usr \
+        --build=$(sh support/config.guess) \
+        --host=$LFS_TGT \
+        --without-bash-malloc
+    make
+    make DESTDIR=$LFS install
+    ln -sv bash $LFS/bin/sh
+}

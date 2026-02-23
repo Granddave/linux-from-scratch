@@ -5,18 +5,20 @@ set -x
 # The Gawk package contains programs for manipulating text files.
 
 echo "Step 6.9: Build Gawk"
+step_no=6.9
+pkg_name=gawk
+pkg_version=5.3.0
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-tar -xf gawk-5.3.0.tar.xz -C /tmp/
-mv /tmp/gawk-* /tmp/gawk
+patch_phase() {
+    sed -i 's/extras//' Makefile.in
+}
 
-pushd /tmp/gawk
-
-sed -i 's/extras//' Makefile.in
-./configure \
-    --prefix=/usr \
-    --host=$LFS_TGT \
-    --build=$(build-aux/config.guess)
-make
-make DESTDIR=$LFS install
-
-popd # /tmp/gawk
+build_phase() {
+    ./configure \
+        --prefix=/usr \
+        --host=$LFS_TGT \
+        --build=$(build-aux/config.guess)
+    make
+    make DESTDIR=$LFS install
+}

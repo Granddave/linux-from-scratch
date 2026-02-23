@@ -3,8 +3,9 @@
 
 step_no=8.4
 pkg_name=iana-etc
-src_tar=iana-etc-20240125.tar.gz
+pkg_version=20240125
+pkg_tar=$pkg_name-$pkg_version.tar.gz
 
-build() {
+build_phase() {
     cp services protocols /etc
 }

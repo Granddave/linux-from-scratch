@@ -8,3 +8,6 @@ export SOURCES_DIR=/sources
 sh /scripts/builder.sh /scripts/build-lfs/8.3-man-pages.sh
 sh /scripts/builder.sh /scripts/build-lfs/8.4-iana-etc.sh
 sh /scripts/builder.sh /scripts/build-lfs/8.5-glibc.sh
+sh /scripts/builder.sh /scripts/build-lfs/8.6-zlib.sh
+sh /scripts/builder.sh /scripts/build-lfs/8.7-bzip2.sh
+sh /scripts/builder.sh /scripts/build-lfs/8.8-xz.sh

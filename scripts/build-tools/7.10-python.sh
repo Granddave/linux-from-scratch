@@ -5,11 +5,12 @@
 
 step_no=7.10
 pkg_name=python
-src_tar=Python-3.12.2.tar.xz
+pkg_version=3.12.2
+pkg_tar=Python-$pkg_version.tar.xz
 
-build() {
+build_phase() {
     ./configure \
-        --prefix=/usr   \
+        --prefix=/usr \
         --enable-shared \
         --without-ensurepip
     make

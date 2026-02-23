@@ -3,9 +3,10 @@
 
 step_no=7.11
 pkg_name=texinfo
-src_tar=texinfo-7.1.tar.xz
+pkg_version=7.1
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-build() {
+build_phase() {
     ./configure \
         --prefix=/usr
     make

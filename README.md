@@ -10,6 +10,7 @@ This is a Docker powered build of [Linux From Scratch version 12.1 with Systemd]
 
 ```sh
 # On host
+make create-volume
 make
 
 # In container
@@ -22,3 +23,7 @@ sh ../scripts/run.sh               # Build host tools and LFS system
 
 - Linux From Scratch community for the excellent book
 - [@reinterpretcat](https://github.com/reinterpretcat/lfs) for their docker base where I got some inspiration.
+
+## Progress
+
+- Next step: 8.9

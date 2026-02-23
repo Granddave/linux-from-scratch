@@ -6,18 +6,17 @@ set -x
 # executables and other non-source files of a package from source files.
 
 echo "Step 6.12: Build Make"
+step_no=6.12
+pkg_name=make
+pkg_version=4.4.1
+pkg_tar=$pkg_name-$pkg_version.tar.gz
 
-tar -xf make-4.4.1.tar.gz -C /tmp/
-mv /tmp/make-* /tmp/make
-
-pushd /tmp/make
-
-./configure \
-    --prefix=/usr \
-    --without-guile \
-    --host=$LFS_TGT \
-    --build=$(build-aux/config.guess)
-make
-make DESTDIR=$LFS install
-
-popd # /tmp/make
+build_phase() {
+    ./configure \
+        --prefix=/usr \
+        --without-guile \
+        --host=$LFS_TGT \
+        --build=$(build-aux/config.guess)
+    make
+    make DESTDIR=$LFS install
+}

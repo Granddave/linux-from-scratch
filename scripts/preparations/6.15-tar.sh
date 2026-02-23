@@ -8,17 +8,16 @@ set -x
 # to update or list files which were already stored.
 
 echo "Step 6.15: Build Tar"
+step_no=6.15
+pkg_name=tar
+pkg_version=1.35
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-tar -xf tar-1.35.tar.xz -C /tmp/
-mv /tmp/tar-* /tmp/tar
-
-pushd /tmp/tar
-
-./configure \
-    --prefix=/usr \
-    --host=$LFS_TGT \
-    --build=$(build-aux/config.guess)
-make
-make DESTDIR=$LFS install
-
-popd # /tmp/tar
+build_phase() {
+    ./configure \
+        --prefix=/usr \
+        --host=$LFS_TGT \
+        --build=$(build-aux/config.guess)
+    make
+    make DESTDIR=$LFS install
+}

@@ -6,25 +6,24 @@ set -x
 # or files.
 
 echo "Step 6.7: Build File"
+step_no=6.7
+pkg_name=file
+pkg_version=5.45
+pkg_tar=$pkg_name-$pkg_version.tar.gz
 
-tar -xf file-5.45.tar.gz -C /tmp/
-mv /tmp/file-* /tmp/file
+build_phase() {
+    mkdir build
+    pushd build
+    ../configure \
+        --disable-bzlib \
+        --disable-libseccomp \
+        --disable-xzlib \
+        --disable-zlib
+    make
+    popd # build
 
-pushd /tmp/file
-
-mkdir build
-pushd build
-../configure \
-    --disable-bzlib \
-    --disable-libseccomp \
-    --disable-xzlib \
-    --disable-zlib
-make
-popd # build
-
-./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)
-make FILE_COMPILE=$(pwd)/build/src/file
-make DESTDIR=$LFS install
-rm -v $LFS/usr/lib/libmagic.la
-
-popd # /tmp/file
+    ./configure --prefix=/usr --host=$LFS_TGT --build=$(./config.guess)
+    make FILE_COMPILE=$(pwd)/build/src/file
+    make DESTDIR=$LFS install
+    rm -v $LFS/usr/lib/libmagic.la
+}

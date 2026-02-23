@@ -3,9 +3,10 @@
 
 step_no=7.12
 pkg_name=util-linux
-src_tar=util-linux-2.39.3.tar.xz
+pkg_version=2.39.3
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-build() {
+build_phase() {
     mkdir -pv /var/lib/hwclock
 
     ./configure \

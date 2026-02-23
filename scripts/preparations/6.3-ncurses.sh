@@ -6,38 +6,39 @@ set -x
 # character screens.
 
 echo "Step 6.3: Build Ncurses"
+step_no=6.3
+pkg_name=ncurses
+pkg_version=6.4-20230520
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-tar -xf ncurses-6.4-20230520.tar.xz -C /tmp/
-mv /tmp/ncurses-* /tmp/ncurses
+patch_phase() {
+    sed -i s/mawk// configure
+}
 
-pushd /tmp/ncurses
+build_phase() {
+    mkdir build
+    pushd build
+    ../configure
+    make -C include
+    make -C progs tic
+    popd # build
 
-sed -i s/mawk// configure
-
-mkdir build
-pushd build
-../configure
-make -C include
-make -C progs tic
-popd # build
-
-./configure \
-    --prefix=/usr \
-    --host=$LFS_TGT \
-    --build=$(./config.guess) \
-    --mandir=/usr/share/man \
-    --with-manpage-format=normal \
-    --with-shared \
-    --without-normal \
-    --with-cxx-shared \
-    --without-debug \
-    --without-ada \
-    --disable-stripping \
-    --enable-widec
-make
-make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
-ln -sv libncursesw.so $LFS/usr/lib/libncurses.so
-sed -e 's/^#if.*XOPEN.*$/#if 1/' \
-    -i $LFS/usr/include/curses.h
-
-popd # /tmp/ncurses
+    ./configure \
+        --prefix=/usr \
+        --host=$LFS_TGT \
+        --build=$(./config.guess) \
+        --mandir=/usr/share/man \
+        --with-manpage-format=normal \
+        --with-shared \
+        --without-normal \
+        --with-cxx-shared \
+        --without-debug \
+        --without-ada \
+        --disable-stripping \
+        --enable-widec
+    make
+    make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
+    ln -sv libncursesw.so $LFS/usr/lib/libncurses.so
+    sed -e 's/^#if.*XOPEN.*$/#if 1/' \
+        -i $LFS/usr/include/curses.h
+}

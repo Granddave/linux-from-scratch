@@ -6,15 +6,16 @@
 
 step_no=8.5
 pkg_name=glibc
-src_tar=glibc-2.39.tar.xz
+pkg_version=2.39
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-prepare() {
+patch_phase() {
     patch -Np1 -i "$SOURCES_DIR/glibc-2.39-fhs-1.patch"
 }
 
-build() {
+build_phase() {
     mkdir -v build
-    pushd build
+    pushd build || exit 1
     echo "rootsbindir=/usr/sbin" > configparms
 
     ../configure                        \
@@ -118,7 +119,7 @@ EOF
     zic -d $ZONEINFO -p America/New_York
     unset ZONEINFO
 
-    tzselect
+    # tzselect  # NOTE: Skipping the interactive part and linking instead.
     ln -sfv /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
     # Configure the dynamic loader

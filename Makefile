@@ -28,6 +28,9 @@ restore-scripts:
 	docker exec $(NAME) bash -c '/usr/bin/rm -rf /mnt/lfs/scripts/*'
 	find ./scripts -mindepth 1 -maxdepth 1 -exec docker cp {} $(NAME):/mnt/lfs/scripts/ \;
 
+create-volume:
+	docker volume create $(DOCKER_VOLUME)
+
 clean:
 	docker rmi $(DOCKER_IMAGE)
 	docker volume rm $(DOCKER_VOLUME)

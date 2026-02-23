@@ -13,10 +13,7 @@ sh /scripts/builder.sh /scripts/build-tools/7.9-perl.sh
 sh /scripts/builder.sh /scripts/build-tools/7.10-python.sh
 sh /scripts/builder.sh /scripts/build-tools/7.11-texinfo.sh
 sh /scripts/builder.sh /scripts/build-tools/7.12-util-linux.sh
-
-echo "7.13: Cleaning Up"
-rm -rf /usr/share/{info,man,doc}/*
-find /usr/{lib,libexec} -name \*.la -delete
+sh /scripts/builder.sh /scripts/build-tools/7.13-cleaning-up.sh
 
 # Skip for now
 #rm -rf /tools

@@ -2,9 +2,12 @@
 set -euo pipefail
 set -x
 
-echo "Step 7.2: Change Ownership"
+# Change Ownership
+step_no=7.12
 
-chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}
-case $(uname -m) in
-  x86_64) chown -R root:root $LFS/lib64 ;;
-esac
+build_phase() {
+    chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}
+    case $(uname -m) in
+      x86_64) chown -R root:root $LFS/lib64 ;;
+    esac
+}

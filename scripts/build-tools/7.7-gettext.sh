@@ -4,9 +4,10 @@
 
 step_no=7.7
 pkg_name=gettext
-src_tar=gettext-0.22.4.tar.xz
+pkg_version=0.22.4
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-build() {
+build_phase() {
     ./configure --disable-shared
     make
     cp -v gettext-tools/src/{msgfmt,msgmerge,xgettext} /usr/bin

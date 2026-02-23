@@ -11,17 +11,17 @@ set -x
 
 echo "Step 6.8: Build Findutils"
 
-tar -xf findutils-4.9.0.tar.xz -C /tmp/
-mv /tmp/findutils-* /tmp/findutils
+step_no=6.8
+pkg_name=findutils
+pkg_version=4.9.0
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-pushd /tmp/findutils
-
-./configure \
-    --prefix=/usr \
-    --localstatedir=/var/lib/locate \
-    --host=$LFS_TGT \
-    --build=$(build-aux/config.guess)
-make
-make DESTDIR=$LFS install
-
-popd # /tmp/findutils
+build_phase() {
+    ./configure \
+        --prefix=/usr \
+        --localstatedir=/var/lib/locate \
+        --host=$LFS_TGT \
+        --build=$(build-aux/config.guess)
+    make
+    make DESTDIR=$LFS install
+}

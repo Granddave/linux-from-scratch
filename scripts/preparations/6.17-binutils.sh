@@ -6,30 +6,31 @@ set -x
 # handling object files.
 
 echo "Step 6.17: Build Binutils (pass 2)"
+step_no=6.17
+pkg_name="binutils"
+pkg_version="2.42"
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-tar -xf binutils-2.42.tar.xz -C /tmp/
-mv /tmp/binutils-* /tmp/binutils-pass2
+patch_phase() {
+    sed '6009s/$add_dir//' -i ltmain.sh
+}
 
-pushd /tmp/binutils-pass2
+build_phase() {
+    mkdir -v build
+    pushd build
+    ../configure \
+        --prefix=/usr \
+        --build=$(../config.guess) \
+        --host=$LFS_TGT \
+        --disable-nls \
+        --enable-shared \
+        --enable-gprofng=no \
+        --disable-werror \
+        --enable-64-bit-bfd \
+        --enable-default-hash-style=gnu
+    make
+    make DESTDIR=$LFS install
+    popd # build
 
-sed '6009s/$add_dir//' -i ltmain.sh
-
-mkdir -v build
-pushd build
-../configure \
-    --prefix=/usr \
-    --build=$(../config.guess) \
-    --host=$LFS_TGT \
-    --disable-nls \
-    --enable-shared \
-    --enable-gprofng=no \
-    --disable-werror \
-    --enable-64-bit-bfd \
-    --enable-default-hash-style=gnu
-make
-make DESTDIR=$LFS install
-popd # build
-
-rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
-
-popd # /tmp/binutils-pass2
+    rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la}
+}

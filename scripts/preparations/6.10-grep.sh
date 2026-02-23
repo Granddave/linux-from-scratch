@@ -5,17 +5,16 @@ set -x
 # The Grep package contains programs for searching through files.
 
 echo "Step 6.10: Build Grep"
+step_no=6.10
+pkg_name=grep
+pkg_version=3.11
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-tar -xf grep-3.11.tar.xz -C /tmp/
-mv /tmp/grep-* /tmp/grep
-
-pushd /tmp/grep
-
-./configure \
-    --prefix=/usr \
-    --host=$LFS_TGT \
-    --build=$(./build-aux/config.guess)
-make
-make DESTDIR=$LFS install
-
-popd # /tmp/grep
+build_phase() {
+    ./configure \
+        --prefix=/usr \
+        --host=$LFS_TGT \
+        --build=$(./build-aux/config.guess)
+    make
+    make DESTDIR=$LFS install
+}

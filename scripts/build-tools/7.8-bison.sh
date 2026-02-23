@@ -2,9 +2,10 @@
 
 step_no=7.8
 pkg_name=bison
-src_tar=bison-3.8.2.tar.xz
+pkg_version=3.8.2
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-build() {
+build_phase() {
     ./configure \
         --prefix=/usr \
         --docdir=/usr/share/doc/bison-3.8.2

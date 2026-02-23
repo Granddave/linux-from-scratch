@@ -3,8 +3,9 @@ set -euo pipefail
 set -x
 
 # Create the necessary directories
+step_no=7.5
 
-echo "Step 7.5. Creating Directories"
+# NOTE: Cannot use mktemp here since /tmp is not available
 
 mkdir -pv /{boot,home,mnt,opt,srv}
 
@@ -23,4 +24,4 @@ ln -sfv /run /var/run
 ln -sfv /run/lock /var/lock
 
 install -dv -m 0750 /root
-install -dv -m 1777 /tmp /var/tmp}
+install -dv -m 1777 /tmp /var/tmp

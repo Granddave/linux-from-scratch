@@ -6,17 +6,16 @@ set -x
 # applying a “patch” file typically created by the diff program.
 
 echo "Step 6.13: Build Patch"
+step_no=6.13
+pkg_name=patch
+pkg_version=2.7.6
+pkg_tar=$pkg_name-$pkg_version.tar.xz
 
-tar -xf patch-2.7.6.tar.xz -C /tmp/
-mv /tmp/patch-* /tmp/patch
-
-pushd /tmp/patch
-
-./configure \
-    --prefix=/usr \
-    --host=$LFS_TGT \
-    --build=$(build-aux/config.guess)
-make
-make DESTDIR=$LFS install
-
-popd # /tmp/patch
+build_phase() {
+    ./configure \
+        --prefix=/usr \
+        --host=$LFS_TGT \
+        --build=$(build-aux/config.guess)
+    make
+    make DESTDIR=$LFS install
+}
