@@ -10,7 +10,9 @@ build_phase() {
 
     mount -v --bind /dev $LFS/dev
 
-    mount -vt devpts devpts -o gid=5,mode=0620 $LFS/dev/pts
+    # NOTE: `,ptmxmode=0666` is added because of issues with GCC test suite
+    #       when running as 'tester' user
+    mount -vt devpts devpts -o gid=5,mode=0620,ptmxmode=0666 $LFS/dev/pts
     mount -vt proc proc $LFS/proc
     mount -vt sysfs sysfs $LFS/sys
     mount -vt tmpfs tmpfs $LFS/run

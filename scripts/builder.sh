@@ -46,6 +46,8 @@ unpack_phase() {
 
     echo "Extracting $source_file"
     tar xf "$source_file" -C "$TMP_DIR"
+    # Make it accissible for all users
+    chmod -R a+rx "$TMP_DIR"
 }
 
 main() {

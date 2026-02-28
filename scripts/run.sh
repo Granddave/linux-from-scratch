@@ -6,6 +6,6 @@ set -x
 
 export SOURCES_DIR=$LFS/sources
 
-# sh $LFS/scripts/preparations/run.sh
-# sh $LFS/scripts/build-tools/run.sh
+sh $LFS/scripts/preparations/run.sh
+sh $LFS/scripts/build-tools/run.sh
 sh $LFS/scripts/build-lfs/run.sh

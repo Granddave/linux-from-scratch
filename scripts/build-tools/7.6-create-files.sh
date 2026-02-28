@@ -66,9 +66,9 @@ nogroup:x:65534:
 EOF
 
 # Skip the test user for now
-#echo "tester:x:101:101::/home/tester:/bin/bash" >> /etc/passwd
-#echo "tester:x:101:" >> /etc/group
-#install -o tester -d /home/tester
+echo "tester:x:101:101::/home/tester:/bin/bash" >> /etc/passwd
+echo "tester:x:101:" >> /etc/group
+install -o tester -d /home/tester
 
 # Skip fixing the shell username when in a script
 #exec /usr/bin/bash --login
