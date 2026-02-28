@@ -21,12 +21,12 @@ backup-scripts:
 	docker cp $(NAME):/mnt/lfs/scripts/ .
 
 restore-sources:
-	docker exec $(NAME) bash -c '/usr/bin/rm -rf /mnt/lfs/sources/*'
-	find ./sources -mindepth 1 -maxdepth 1 -exec docker cp {} $(NAME):/mnt/lfs/sources/ \;
+	docker exec $(NAME) bash -c 'rm -rf /mnt/lfs/sources/*'
+	tar cf - sources | docker exec -i $(NAME) tar xf - -C /mnt/lfs/
 
 restore-scripts:
-	docker exec $(NAME) bash -c '/usr/bin/rm -rf /mnt/lfs/scripts/*'
-	find ./scripts -mindepth 1 -maxdepth 1 -exec docker cp {} $(NAME):/mnt/lfs/scripts/ \;
+	docker exec $(NAME) bash -c 'rm -rf /mnt/lfs/scripts/*'
+	tar cf - scripts | docker exec -i $(NAME) tar xf - -C /mnt/lfs/
 
 create-volume:
 	docker volume create $(DOCKER_VOLUME)
