@@ -38,11 +38,10 @@ RUN groupadd lfs \
 RUN echo "lfs ALL=NOPASSWD: ALL" >> /etc/sudoers.d/lfs
 RUN echo 'Defaults env_keep += "LFS LC_ALL LFS_TGT PATH MAKEFLAGS"' >> /etc/sudoers.d/lfs
 
-COPY ./scripts $LFS/scripts
-RUN chown -vR lfs \
-    $LFS/sources \
-    $LFS/scripts
+COPY --chown=lfs:lfs ./scripts $LFS/scripts
+# Ensure lfs owns the sources directory (created earlier as root)
+RUN chown lfs:lfs $LFS/sources
 
 USER lfs
-COPY ["lfs-user/.bash_profile", "lfs-user/.bashrc", "/home/lfs/" ]
+COPY --chown=lfs:lfs ["lfs-user/.bash_profile", "lfs-user/.bashrc", "/home/lfs/" ]
 RUN source ~/.bash_profile
