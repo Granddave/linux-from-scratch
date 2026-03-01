@@ -4,6 +4,8 @@ set -euo pipefail
 export SOURCES_DIR=$LFS/sources
 
 sudo --preserve-env=SOURCES_DIR sh $LFS/scripts/builder.sh $LFS/scripts/build-tools/7.2-change-ownership.sh
+
+# This needs to be run for every new docker runner:
 sudo --preserve-env=SOURCES_DIR sh $LFS/scripts/builder.sh $LFS/scripts/build-tools/7.3-prepare-vfs.sh
 
 echo "Step 7.4: Build the LFS base"
