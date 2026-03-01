@@ -2,6 +2,8 @@
 
 set -ex
 
+echo "Step 8.83: Cleaning up"
+
 rm -rf /tmp/*
 find /usr/lib /usr/libexec -name \*.la -delete
 

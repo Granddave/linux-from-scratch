@@ -52,3 +52,8 @@ sh /scripts/builder.sh /scripts/build-lfs/8.79-util-linux.sh
 sh /scripts/builder.sh /scripts/build-lfs/8.80-e2fsprogs.sh
 
 sh /scripts/build-lfs/8.83-cleaning-up.sh
+sh /scripts/build-lfs/9.5-configuring-clock.sh
+sh /scripts/build-lfs/9.6-configuring-console.sh
+sh /scripts/build-lfs/9.7-configuring-locale.sh
+sh /scripts/build-lfs/9.8-inputrc.sh
+sh /scripts/build-lfs/9.9-shells.sh
